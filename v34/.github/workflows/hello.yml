@@ -1,10 +1,7 @@
 name: Hello CI
 
 # Trigger på push till main
-on:
-  push:
-    branches: 
-      - main
+on: push
 
 jobs:
   hello:
