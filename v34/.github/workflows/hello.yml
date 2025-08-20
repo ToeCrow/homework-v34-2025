@@ -1,7 +1,8 @@
 name: Hello CI
 
-# Trigger på push till main
-on: push
+# Trigger på alla pushes (för felsökning)
+on: 
+  push:
 
 jobs:
   hello:
@@ -11,10 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Testa workflow
+      # 2. Skriv ett meddelande i loggen
       - name: Say Hello
-        run: echo "Hello CI"
+        run: echo "Hello CI is running!"
 
-      # 3. Extra steg för felsökning (valfritt)
+      # 3. Visa branch (valfritt, för felsökning)
       - name: Show current branch
         run: git branch
