@@ -27,6 +27,7 @@ export default tseslint.config([
       ...tseslint.configs.stylisticTypeChecked,
 
       // Other configs...
+      //Gaston comments
     ],
     languageOptions: {
       parserOptions: {
