@@ -3,6 +3,10 @@ name: Hello CI
 # Trigger på alla pushes (för felsökning)
 on: 
   push:
+    branches: [ "main" ]
+
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   hello:
