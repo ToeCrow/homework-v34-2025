@@ -3,6 +3,10 @@ name: Hello CI
 # Trigger på alla pushes (för felsökning)
 on: 
   push:
+    branches: [ "main" ]
+
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   hello:
@@ -14,7 +18,7 @@ jobs:
 
       # 2. Skriv ett meddelande i loggen
       - name: Say Hello
-        run: echo "Hello CI is running!"
+        run: echo "Hello CI is running!, testing as a group igen med pr i rules"
 
       # 3. Visa branch (valfritt, för felsökning)
       - name: Show current branch
