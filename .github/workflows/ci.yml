@@ -1,29 +1,48 @@
-name: Frontend CI
+name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: npm
 
+      # Install dependencies
       - name: Install dependencies
-        run: npm install
+        working-directory: ./v34
+        run: npm ci
 
+      # Type check
+      - name: Type check
+        working-directory: ./v34
+        run: npm run typecheck --if-present
+
+      # Lint
+      - name: Lint
+        working-directory: ./v34
+        run: npm run lint --if-present
+
+      # Run tests
       - name: Run tests
-        run: npm test
+        working-directory: ./v34
+        run: npm test --if-present
 
-      - name: Build projekt
+      # Build
+      - name: Build
+        working-directory: ./v34
         run: npm run build
-        
